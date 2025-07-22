@@ -1,0 +1,20 @@
+{
+    "name": "2048-game",
+    "version": "1.0.0",
+    "description": "2048 Game Implementation",
+    "main": "js/main.js",
+    "scripts": {
+        "test": "jest",
+        "test:watch": "jest --watch"
+    },
+    "devDependencies": {
+        "jest": "^29.0.0",
+        "jest-environment-jsdom": "^30.0.5"
+    },
+    "jest": {
+        "testEnvironment": "jsdom",
+        "testMatch": [
+            "**/js/**/*.test.js"
+        ]
+    }
+}

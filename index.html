@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2048 游戏</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>2048</h1>
+            <div class="score-container">
+                <div class="score">分数: <span id="score">0</span></div>
+                <div class="best-score">最高: <span id="best-score">0</span></div>
+            </div>
+            <button id="restart-btn">重新开始</button>
+        </div>
+
+        <div class="game-grid" id="game-grid">
+            <!-- 4x4网格将通过JavaScript动态生成 -->
+        </div>
+
+        <div class="game-message" id="game-message" style="display: none;">
+            <!-- 游戏结束或胜利消息 -->
+        </div>
+    </div>
+
+    <script src="js/GameState.js"></script>
+    <script src="js/GameEngine.js"></script>
+    <script src="js/InputHandler.js"></script>
+    <script src="js/UIController.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

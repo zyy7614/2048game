@@ -1,0 +1,272 @@
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', 'Microsoft YaHei', sans-serif;
+    background-color: #faf8ef;
+    color: #776e65;
+    text-align: center;
+    padding: 20px;
+}
+
+/* 游戏容器 */
+.game-container {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* 游戏头部 */
+.game-header {
+    margin-bottom: 20px;
+}
+
+.game-header h1 {
+    font-size: 48px;
+    color: #776e65;
+    margin-bottom: 10px;
+}
+
+.score-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 15px;
+}
+
+.score,
+.best-score {
+    background: #bbada0;
+    padding: 10px 15px;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+    min-width: 80px;
+}
+
+#restart-btn {
+    background: #8f7a66;
+    color: #f9f6f2;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 3px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#restart-btn:hover {
+    background: #9f8a76;
+}
+
+/* 游戏网格 */
+.game-grid {
+    position: relative;
+    background: #bbada0;
+    border-radius: 6px;
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 8px;
+    padding: 8px;
+}
+
+/* 网格单元格 */
+.grid-cell {
+    background: rgba(238, 228, 218, 0.35);
+    border-radius: 3px;
+}
+
+/* 方块样式 */
+.tile {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    border-radius: 3px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    transition: all 0.15s ease-in-out;
+    z-index: 10;
+}
+
+/* 不同数值方块的颜色 */
+.tile-2 {
+    background: #eee4da;
+    color: #776e65;
+}
+
+.tile-4 {
+    background: #ede0c8;
+    color: #776e65;
+}
+
+.tile-8 {
+    background: #f2b179;
+    color: #f9f6f2;
+}
+
+.tile-16 {
+    background: #f59563;
+    color: #f9f6f2;
+}
+
+.tile-32 {
+    background: #f67c5f;
+    color: #f9f6f2;
+}
+
+.tile-64 {
+    background: #f65e3b;
+    color: #f9f6f2;
+}
+
+.tile-128 {
+    background: #edcf72;
+    color: #f9f6f2;
+    font-size: 28px;
+}
+
+.tile-256 {
+    background: #edcc61;
+    color: #f9f6f2;
+    font-size: 28px;
+}
+
+.tile-512 {
+    background: #edc850;
+    color: #f9f6f2;
+    font-size: 28px;
+}
+
+.tile-1024 {
+    background: #edc53f;
+    color: #f9f6f2;
+    font-size: 24px;
+}
+
+.tile-2048 {
+    background: #edc22e;
+    color: #f9f6f2;
+    font-size: 24px;
+}
+
+/* 新方块动画 */
+.tile-new {
+    animation: appear 0.2s ease-in-out;
+}
+
+@keyframes appear {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* 合并动画 */
+.tile-merged {
+    animation: merge 0.15s ease-in-out;
+}
+
+@keyframes merge {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* 游戏消息 */
+.game-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.game-message h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.game-message p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.game-message button {
+    background: #8f7a66;
+    color: #f9f6f2;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 3px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.game-message button:hover {
+    background: #9f8a76;
+}
+
+/* 响应式设计 */
+@media (max-width: 520px) {
+    .game-container {
+        padding: 10px;
+    }
+
+    .game-header h1 {
+        font-size: 36px;
+    }
+
+    .game-grid {
+        width: 320px;
+        height: 320px;
+    }
+
+    .tile {
+        width: 72px;
+        height: 72px;
+        font-size: 24px;
+    }
+
+    .tile-128,
+    .tile-256,
+    .tile-512 {
+        font-size: 20px;
+    }
+
+    .tile-1024,
+    .tile-2048 {
+        font-size: 18px;
+    }
+
+    .score-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
