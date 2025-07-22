@@ -86,8 +86,6 @@ body {
 /* 方块样式 */
 .tile {
     position: absolute;
-    width: 90px;
-    height: 90px;
     border-radius: 3px;
     font-weight: bold;
     display: flex;

@@ -150,14 +150,56 @@ class UIController {
      * @param {number} col - 列位置
      */
     setTilePosition(tile, row, col) {
-        const cellSize = 90; // 方块大小
-        const gap = 8; // 间隙大小
+        // 获取游戏网格的实际尺寸
+        const gridRect = this.gameGrid.getBoundingClientRect();
+        const gridStyle = window.getComputedStyle(this.gameGrid);
+        const padding = parseInt(gridStyle.padding) || 8;
+        const gap = parseInt(gridStyle.gap) || 8;
 
-        const x = col * (cellSize + gap) + gap;
-        const y = row * (cellSize + gap) + gap;
+        // 计算可用空间
+        const availableWidth = gridRect.width - (2 * padding);
+        const availableHeight = gridRect.height - (2 * padding);
+
+        // 计算单元格大小（减去间隙）
+        const cellSize = (availableWidth - (3 * gap)) / 4;
+
+        // 计算位置
+        const x = col * (cellSize + gap) + padding;
+        const y = row * (cellSize + gap) + padding;
 
         tile.style.left = `${x}px`;
         tile.style.top = `${y}px`;
+
+        // 确保方块大小与计算的单元格大小一致
+        tile.style.width = `${cellSize}px`;
+        tile.style.height = `${cellSize}px`;
+
+        // 动态设置字体大小
+        this.setTileFontSize(tile, cellSize);
+    }
+
+    /**
+     * 根据方块大小动态设置字体大小
+     * @param {HTMLElement} tile - 方块元素
+     * @param {number} cellSize - 单元格大小
+     */
+    setTileFontSize(tile, cellSize) {
+        const value = parseInt(tile.textContent);
+        let fontSize;
+
+        // 根据方块大小和数值计算合适的字体大小
+        if (value < 100) {
+            fontSize = cellSize * 0.35; // 2, 4, 8, 16, 32, 64
+        } else if (value < 1000) {
+            fontSize = cellSize * 0.3; // 128, 256, 512
+        } else {
+            fontSize = cellSize * 0.25; // 1024, 2048及以上
+        }
+
+        // 设置最小和最大字体大小限制
+        fontSize = Math.max(12, Math.min(fontSize, 36));
+
+        tile.style.fontSize = `${fontSize}px`;
     }
 
     /**
