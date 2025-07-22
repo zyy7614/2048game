@@ -235,38 +235,164 @@ body {
 
 /* 响应式设计 */
 @media (max-width: 520px) {
-    .game-container {
+    body {
         padding: 10px;
     }
 
+    .game-container {
+        padding: 5px;
+        max-width: 100%;
+    }
+
     .game-header h1 {
-        font-size: 36px;
+        font-size: 32px;
+        margin-bottom: 8px;
+    }
+
+    .score-container {
+        flex-direction: row;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .score,
+    .best-score {
+        padding: 8px 12px;
+        font-size: 14px;
+        min-width: 70px;
+    }
+
+    #restart-btn {
+        padding: 8px 16px;
+        font-size: 14px;
     }
 
     .game-grid {
-        width: 320px;
-        height: 320px;
+        width: calc(100vw - 40px);
+        height: calc(100vw - 40px);
+        max-width: 350px;
+        max-height: 350px;
+        margin: 10px auto;
     }
 
     .tile {
-        width: 72px;
-        height: 72px;
-        font-size: 24px;
+        width: calc((100vw - 72px) / 4);
+        height: calc((100vw - 72px) / 4);
+        max-width: 80px;
+        max-height: 80px;
+        font-size: calc(1.2rem + 1vw);
+        max-font-size: 28px;
     }
 
     .tile-128,
     .tile-256,
     .tile-512 {
-        font-size: 20px;
+        font-size: calc(1rem + 1vw);
+        max-font-size: 24px;
     }
 
     .tile-1024,
     .tile-2048 {
-        font-size: 18px;
+        font-size: calc(0.8rem + 1vw);
+        max-font-size: 20px;
+    }
+
+    .game-message h2 {
+        font-size: 36px;
+    }
+
+    .game-message p {
+        font-size: 16px;
+        padding: 0 20px;
+    }
+
+    .game-message button {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+}
+
+/* 更小屏幕适配 */
+@media (max-width: 380px) {
+    .game-header h1 {
+        font-size: 28px;
     }
 
     .score-container {
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
+    }
+
+    .score,
+    .best-score {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    .game-grid {
+        width: calc(100vw - 30px);
+        height: calc(100vw - 30px);
+        max-width: 300px;
+        max-height: 300px;
+    }
+
+    .tile {
+        width: calc((100vw - 62px) / 4);
+        height: calc((100vw - 62px) / 4);
+        max-width: 70px;
+        max-height: 70px;
+        font-size: calc(1rem + 1vw);
+        max-font-size: 24px;
+    }
+
+    .tile-128,
+    .tile-256,
+    .tile-512 {
+        font-size: calc(0.8rem + 1vw);
+        max-font-size: 20px;
+    }
+
+    .tile-1024,
+    .tile-2048 {
+        font-size: calc(0.7rem + 1vw);
+        max-font-size: 18px;
+    }
+}
+
+/* 横屏适配 */
+@media (max-height: 600px) and (orientation: landscape) {
+    body {
+        padding: 5px;
+    }
+
+    .game-header h1 {
+        font-size: 24px;
+        margin-bottom: 5px;
+    }
+
+    .score-container {
+        margin-bottom: 8px;
+    }
+
+    .game-grid {
+        width: 280px;
+        height: 280px;
+    }
+
+    .tile {
+        width: 65px;
+        height: 65px;
+        font-size: 20px;
+    }
+
+    .tile-128,
+    .tile-256,
+    .tile-512 {
+        font-size: 18px;
+    }
+
+    .tile-1024,
+    .tile-2048 {
+        font-size: 16px;
     }
 }
